@@ -63,5 +63,44 @@ namespace pjPlanillaPago
 
             txtEmpleado.Focus();
         }
+
+        private void btnProcesar_Click(object sender, EventArgs e)
+        {
+            // Capturando datos
+            string empleado = txtEmpleado.Text;
+            string cargo = cboCargo.Text;
+            DateTime fechaIngreso = dtFechaIngreso.Value;
+            int años = int.Parse(txtAños.Text);
+
+            // Objeto de la clase Planilla
+            Planilla objP = new Planilla();
+            objP.empleado = empleado;
+            objP.cargo = cargo;
+            objP.fechaIngreso = fechaIngreso;
+            objP.años = años;
+
+            // Realizando la impresión de valores
+            txtMes.Text = objP.mesConsultado();
+            lblBasico.Text = objP.DeterminaBasico().ToString("C");
+            lblGratificacion.Text = objP.DeterminaGratificacion().ToString("C");
+            lblComision.Text = objP.DeterminaComision().ToString("C");
+            lblCooperativa.Text = objP.DeterminaDescuentoCooperativa().ToString("C");
+            lblSeguro.Text = objP.DeterminaAportacionSeguro().ToString("C");
+
+            lblTotalIngresos.Text = objP.CalculaTotalIngresos().ToString("C");
+            lblTotalDescuentos.Text = objP.CalculaTotalDescuentos().ToString("C");
+            lblTotalAportaciones.Text = objP.CalculaTotalAportaciones().ToString("C");
+
+            lblTotal.Text = objP.DeterminaNeto().ToString("C");
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            DialogResult r = MessageBox.Show("¿Está seguro de salir?", "Planilla",
+                                MessageBoxButtons.YesNo,
+                                MessageBoxIcon.Information);
+            if (r == DialogResult.Yes)
+                this.Close();
+        }
     }
 }
