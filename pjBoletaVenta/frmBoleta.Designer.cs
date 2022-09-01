@@ -167,12 +167,13 @@
             // 
             // btnAñadir
             // 
-            this.btnAñadir.Location = new System.Drawing.Point(567, 27);
+            this.btnAñadir.Location = new System.Drawing.Point(568, 44);
             this.btnAñadir.Name = "btnAñadir";
             this.btnAñadir.Size = new System.Drawing.Size(75, 23);
             this.btnAñadir.TabIndex = 6;
             this.btnAñadir.Text = "AÑADIR";
             this.btnAñadir.UseVisualStyleBackColor = true;
+            this.btnAñadir.Click += new System.EventHandler(this.btnAñadir_Click);
             // 
             // txtCantidad
             // 
@@ -212,7 +213,7 @@
             this.cboProducto.FormattingEnabled = true;
             this.cboProducto.Items.AddRange(new object[] {
             "PS5 + 1 MANDO DS5",
-            "PS4 (1TB) + 1 MANDO DS4",
+            "PS4(1TB) + 1 MANDO DS4",
             "MANDO PS5/DS5",
             "MANDO PS4/DS4"});
             this.cboProducto.Location = new System.Drawing.Point(15, 45);
@@ -220,6 +221,7 @@
             this.cboProducto.Size = new System.Drawing.Size(217, 23);
             this.cboProducto.TabIndex = 1;
             this.cboProducto.Text = "(Seleccione)";
+            this.cboProducto.SelectedIndexChanged += new System.EventHandler(this.cboProducto_SelectedIndexChanged);
             // 
             // label7
             // 
@@ -244,6 +246,7 @@
             this.lvDetalle.TabIndex = 11;
             this.lvDetalle.UseCompatibleStateImageBehavior = false;
             this.lvDetalle.View = System.Windows.Forms.View.Details;
+            this.lvDetalle.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lvDetalle_MouseDoubleClick);
             // 
             // columnHeader1
             // 
