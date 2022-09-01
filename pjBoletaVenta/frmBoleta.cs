@@ -29,6 +29,7 @@ namespace pjBoletaVenta
             num++;
             lblNumero.Text = num.ToString("D5");
             txtFecha.Text = DateTime.Now.ToShortDateString();
+            lblTotal.Text = (0).ToString("C");
         }
 
         private void cboProducto_SelectedIndexChanged(object sender, EventArgs e)
@@ -135,6 +136,49 @@ namespace pjBoletaVenta
                 lblTotal.Text = DeterminaTotal().ToString("C");
                 MessageBox.Show("¡Detalle eliminado correctamente!");
             }
+        }
+
+        private void btnRegistrar_Click(object sender, EventArgs e)
+        {
+            ListViewItem fila = new ListViewItem(int.Parse(lblNumero.Text).ToString("D5"));
+            fila.SubItems.Add(txtFecha.Text);
+            fila.SubItems.Add(TotalCantidad().ToString("0.00"));
+            fila.SubItems.Add(DeterminaTotal().ToString("C"));
+            lvEstadisticas.Items.Add(fila);
+            LimpiarControles();
+        }
+
+        private void LimpiarControles()
+        {
+            num++;
+            lblNumero.Text = num.ToString("D5");
+            txtCliente.Clear();
+            txtDireccion.Clear();
+            txtCedula.Clear();
+            cboProducto.Text = "(Seleccione)";
+            txtPrecio.Clear();
+            txtCantidad.Clear();
+            lblTotal.Text = (0).ToString("C");
+            lvDetalle.Items.Clear();
+        }
+
+        // Total de productos por boleta
+        private int TotalCantidad()
+        {
+            int total = 0;
+            for (int i = 0; i < lvDetalle.Items.Count; i++)
+            {
+                total += int.Parse(lvDetalle.Items[i].SubItems[0].Text);
+            }
+            return total;
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            DialogResult r = MessageBox.Show("¿Está seguro de salir?","Boleta",
+                                             MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if(r == DialogResult.Yes)
+                this.Close();
         }
     }
 }

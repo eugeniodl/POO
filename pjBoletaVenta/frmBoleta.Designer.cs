@@ -295,6 +295,7 @@
             this.btnRegistrar.TabIndex = 14;
             this.btnRegistrar.Text = "REGISTRAR BOLETA";
             this.btnRegistrar.UseVisualStyleBackColor = true;
+            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             // 
             // label12
             // 
@@ -348,6 +349,7 @@
             this.btnSalir.TabIndex = 17;
             this.btnSalir.Text = "SALIR";
             this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // frmBoleta
             // 
