@@ -17,7 +17,7 @@ namespace pjBoletaVenta
         ListViewItem item;
 
         // Objeto de la clase Boleta
-        Boleta objB = new Boleta();
+        //Modelo.Boleta objB = new Modelo.Boleta();
 
         public frmBoleta()
         {
@@ -34,20 +34,31 @@ namespace pjBoletaVenta
 
         private void cboProducto_SelectedIndexChanged(object sender, EventArgs e)
         {
-            objB.Producto = cboProducto.Text;
-            txtPrecio.Text = objB.DeterminaPrecio().ToString("C");
+            //objB.Producto = cboProducto.Text;
+            //txtPrecio.Text = objB.DeterminaPrecio().ToString("C");
+
+            Boleta.Producto = cboProducto.Text;
+            txtPrecio.Text = Boleta.DeterminaPrecio().ToString("C");
         }
 
         // Capturar los datos del formulario
         private void CapturaDatos()
         {
-            objB.Numero = int.Parse(lblNumero.Text);
-            objB.Cliente = txtCliente.Text;
-            objB.Direccion = txtDireccion.Text;
-            objB.Fecha = DateTime.Parse(txtFecha.Text);
-            objB.Cedula = txtCedula.Text;
-            objB.Producto = cboProducto.Text;
-            objB.Cantidad = int.Parse(txtCantidad.Text);
+            //objB.Numero = int.Parse(lblNumero.Text);
+            //objB.Cliente = txtCliente.Text;
+            //objB.Direccion = txtDireccion.Text;
+            //objB.Fecha = DateTime.Parse(txtFecha.Text);
+            //objB.Cedula = txtCedula.Text;
+            //objB.Producto = cboProducto.Text;
+            //objB.Cantidad = int.Parse(txtCantidad.Text);
+
+            Boleta.Numero = int.Parse(lblNumero.Text);
+            Boleta.Cliente = txtCliente.Text;
+            Boleta.Direccion = txtDireccion.Text;
+            Boleta.Fecha = DateTime.Parse(txtFecha.Text);
+            Boleta.Cedula = txtCedula.Text;
+            Boleta.Producto = cboProducto.Text;
+            Boleta.Cantidad = int.Parse(txtCantidad.Text);
         }
 
         private void btnAñadir_Click(object sender, EventArgs e)
@@ -58,8 +69,11 @@ namespace pjBoletaVenta
                 CapturaDatos();
 
                 // Determinar los cálculos de la aplicación
-                double precio = objB.DeterminaPrecio();
-                double importe = objB.Calculalmporte();
+                //double precio = objB.DeterminaPrecio();
+                //double importe = objB.Calculalmporte();
+
+                double precio = Boleta.DeterminaPrecio();
+                double importe = Boleta.Calculalmporte();
 
                 // Imprimir el detalle de la venta
                 ImprimirDetalle(precio, importe);
@@ -84,8 +98,10 @@ namespace pjBoletaVenta
 
         private void ImprimirDetalle(double precio, double importe)
         {
-            ListViewItem fila = new ListViewItem(objB.Cantidad.ToString());
-            fila.SubItems.Add(objB.Producto);
+            //ListViewItem fila = new ListViewItem(objB.Cantidad.ToString());
+            //fila.SubItems.Add(objB.Producto);
+            ListViewItem fila = new ListViewItem(Boleta.Cantidad.ToString());
+            fila.SubItems.Add(Boleta.Producto);
             fila.SubItems.Add(precio.ToString("0.00"));
             fila.SubItems.Add(importe.ToString("0.00"));
             lvDetalle.Items.Add(fila);

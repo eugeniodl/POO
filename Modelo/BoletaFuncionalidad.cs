@@ -4,20 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace pjBoletaVenta
+namespace Modelo
 {
-    public static class Boleta
+    public partial class Boleta
     {
-        public static int Numero { get; set; }
-        public static string? Cliente { get; set; }
-        public static string? Direccion { get; set; }
-        public static string? Cedula { get; set; }
-        public static DateTime Fecha { get; set; }
-        public static string? Producto { get; set; }
-        public static int Cantidad { get; set; }
 
         // Métodos para determinar el precio del producto
-        public static double DeterminaPrecio()
+        public double DeterminaPrecio()
         {
             switch (Producto)
             {
@@ -30,9 +23,10 @@ namespace pjBoletaVenta
         }
 
         // Método para determinar el importe
-        public static double Calculalmporte()
+        public double Calculalmporte()
         {
             return Cantidad * DeterminaPrecio();
         }
     }
 }
+
